@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "onut-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4871"],
+      "port": 4871
+    }
+  ]
+}
