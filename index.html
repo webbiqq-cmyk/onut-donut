@@ -231,8 +231,16 @@ footer{background:var(--bg);}
 
 /* ---------- gallery strip ---------- */
 .strip{
-  display:flex; gap:14px; overflow-x:auto; padding-bottom:6px; scrollbar-width:thin;
+  overflow:hidden; padding-bottom:6px;
+  mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
+.strip-track{
+  display:flex; gap:14px; width:max-content;
+  animation:marquee 26s linear infinite;
+}
+.strip:hover .strip-track{ animation-play-state:paused; }
+@keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+@media (prefers-reduced-motion: reduce){ .strip-track{ animation:none; overflow-x:auto; } }
 .strip .tile{
   flex:none; width:180px; aspect-ratio:1/1; border-radius:16px; border:1px solid var(--line);
   background:var(--bg-card);
@@ -386,7 +394,7 @@ body.loaded .hero-copy > *:nth-child(6){transition-delay:.45s;}
 /* ---------- whisk pop-out (menu section) ---------- */
 #menu{ position:relative; }
 .menu-whisk{
-  position:absolute; top:-10px; right:4%; width:22%; min-width:170px; max-width:280px;
+  position:absolute; top:-60px; right:2%; width:34%; min-width:260px; max-width:420px;
   z-index:5; transform:rotate(-16deg);
   animation:whisk-bob 4.6s ease-in-out infinite;
 }
@@ -395,7 +403,7 @@ body.loaded .hero-copy > *:nth-child(6){transition-delay:.45s;}
   filter:drop-shadow(0 26px 30px rgba(0,0,0,.55));
 }
 @keyframes whisk-bob{ 0%,100%{ transform:rotate(-16deg) translateY(0);} 50%{ transform:rotate(-13deg) translateY(-8px);} }
-@media (max-width:640px){ .menu-whisk{ top:4px; right:10px; width:120px; min-width:0; } }
+@media (max-width:640px){ .menu-whisk{ top:-10px; right:6px; width:180px; min-width:0; } }
 .btn{ transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
 .btn-solid:hover{ transform:translateY(-2px); box-shadow:0 10px 22px -10px color-mix(in srgb, var(--accent) 70%, transparent); }
 .btn-outline:hover{ transform:translateY(-2px); border-color:var(--accent); }
@@ -637,29 +645,55 @@ body[dir="rtl"] .foot-links{ }
         <h2 class="section-title display" data-en="Today's batch." data-ar="دفعة اليوم.">Today's batch.</h2>
       </div>
       <div class="strip" role="list">
-        <div class="tile reveal" role="listitem">
-          <img src="img/ring.webp" alt="Mini glazed rings" />
-          <span data-en="Classic glaze" data-ar="جلايز كلاسيك">Classic glaze</span>
-        </div>
-        <div class="tile reveal" role="listitem">
-          <img src="img/cloud.webp" alt="Powdered Cloud donut" />
-          <span data-en="Cloud drop" data-ar="كلاود دروب">Cloud drop</span>
-        </div>
-        <div class="tile reveal" role="listitem">
-          <img src="img/crunchy.webp" alt="Crunchy almond topping" />
-          <span data-en="Crunchy shell" data-ar="قشرة كرانشي">Crunchy shell</span>
-        </div>
-        <div class="tile reveal" role="listitem">
-          <img src="img/bomb.webp" alt="Filled Bomb donut" />
-          <span data-en="Filled bomb" data-ar="بومب محشي">Filled bomb</span>
-        </div>
-        <div class="tile reveal" role="listitem">
-          <img src="img/cake.webp" alt="Brownie slice" />
-          <span data-en="Brownie slab" data-ar="براوني">Brownie slab</span>
-        </div>
-        <div class="tile reveal" role="listitem">
-          <img src="img/custom.webp" alt="Build your own donut kit" />
-          <span data-en="Build your own" data-ar="صمم طلبك">Build your own</span>
+        <div class="strip-track">
+          <div class="tile" role="listitem">
+            <img src="img/ring.webp" alt="Mini glazed rings" />
+            <span data-en="Classic glaze" data-ar="جلايز كلاسيك">Classic glaze</span>
+          </div>
+          <div class="tile" role="listitem">
+            <img src="img/cloud.webp" alt="Powdered Cloud donut" />
+            <span data-en="Cloud drop" data-ar="كلاود دروب">Cloud drop</span>
+          </div>
+          <div class="tile" role="listitem">
+            <img src="img/crunchy.webp" alt="Crunchy almond topping" />
+            <span data-en="Crunchy shell" data-ar="قشرة كرانشي">Crunchy shell</span>
+          </div>
+          <div class="tile" role="listitem">
+            <img src="img/bomb.webp" alt="Filled Bomb donut" />
+            <span data-en="Filled bomb" data-ar="بومب محشي">Filled bomb</span>
+          </div>
+          <div class="tile" role="listitem">
+            <img src="img/cake.webp" alt="Brownie slice" />
+            <span data-en="Brownie slab" data-ar="براوني">Brownie slab</span>
+          </div>
+          <div class="tile" role="listitem">
+            <img src="img/custom.webp" alt="Build your own donut kit" />
+            <span data-en="Build your own" data-ar="صمم طلبك">Build your own</span>
+          </div>
+          <div class="tile" role="listitem" aria-hidden="true">
+            <img src="img/ring.webp" alt="" />
+            <span data-en="Classic glaze" data-ar="جلايز كلاسيك">Classic glaze</span>
+          </div>
+          <div class="tile" role="listitem" aria-hidden="true">
+            <img src="img/cloud.webp" alt="" />
+            <span data-en="Cloud drop" data-ar="كلاود دروب">Cloud drop</span>
+          </div>
+          <div class="tile" role="listitem" aria-hidden="true">
+            <img src="img/crunchy.webp" alt="" />
+            <span data-en="Crunchy shell" data-ar="قشرة كرانشي">Crunchy shell</span>
+          </div>
+          <div class="tile" role="listitem" aria-hidden="true">
+            <img src="img/bomb.webp" alt="" />
+            <span data-en="Filled bomb" data-ar="بومب محشي">Filled bomb</span>
+          </div>
+          <div class="tile" role="listitem" aria-hidden="true">
+            <img src="img/cake.webp" alt="" />
+            <span data-en="Brownie slab" data-ar="براوني">Brownie slab</span>
+          </div>
+          <div class="tile" role="listitem" aria-hidden="true">
+            <img src="img/custom.webp" alt="" />
+            <span data-en="Build your own" data-ar="صمم طلبك">Build your own</span>
+          </div>
         </div>
       </div>
     </div>
