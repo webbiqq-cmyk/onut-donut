@@ -174,14 +174,25 @@ section{padding-block:72px;}
 .section-sub{color:var(--fg-dim); font-size:15.5px; line-height:1.6;}
 .rule{height:1px; background:var(--line); border:0; margin:0;}
 
-/* alternating section bands: base red / lighter red / base red / lighter warm tone / lighter red / darker red */
+/* alternating section bands: dark red / off-white / dark red / off-white ... */
 .hero{background:var(--bg);}
-#about{background:var(--bg-elev);}
 #menu{background:var(--bg);}
-#gallery{background:var(--bg-elev);}
 #visit{background:var(--bg);}
-#order{background:var(--bg-elev);}
 footer{background:var(--bg);}
+
+.band-cream{
+  background:#fbf2e4; color:#2a1112;
+  --bg-elev:#f3e3cd;
+  --bg-card:#ffffff;
+  --line:#e3c9a8;
+  --fg:#2a1112;
+  --fg-dim:#6d3a35;
+  --fg-faint:#a97a6c;
+  --accent:#b9471f;
+  --accent-ink:#fff6ea;
+  --rose:#c1546a;
+  --red:#9c2420;
+}
 
 /* ---------- about ---------- */
 .about{display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:center;}
@@ -513,7 +524,7 @@ body[dir="rtl"] .foot-links{ }
 
   <hr class="rule">
 
-  <section id="about">
+  <section id="about" class="band-cream">
     <div class="wrap about">
       <div class="about-figure reveal">
         <img src="img/storefront.png" alt="Onut Donut Cafe storefront in West Riffa, Bahrain" />
@@ -638,7 +649,7 @@ body[dir="rtl"] .foot-links{ }
 
   <hr class="rule">
 
-  <section id="gallery">
+  <section id="gallery" class="band-cream">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow" data-en="From the case" data-ar="من واجهة العرض">From the case</span>
@@ -733,7 +744,7 @@ body[dir="rtl"] .foot-links{ }
     </div>
   </section>
 
-  <section id="order">
+  <section id="order" class="band-cream">
     <div class="wrap">
       <div class="order reveal">
         <span class="eyebrow" data-en="Hungry already?" data-ar="جاع بطنك؟">Hungry already?</span>
